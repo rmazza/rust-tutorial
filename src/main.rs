@@ -8,7 +8,55 @@ fn main() {
 fn function_example_one(x: i32, y: i32){
     println!("The value of x is: {}", x);
     println!("The value of y is: {}", y);
+
+    /* 
+        let y = 6; is an expression that evaluates to the value 6
+        Calling a macro is an expression.
+
+        Expressions can be part of statements
+        The block that we use to create new scopes, {}, is an expression 
+        This block evaluates to 4
+        Expressions do not include ending semicolons.
+        If you add a semicolon to the end of an expression, you turn it into a statement, which will then not return a value.
+    */
+    let y = {     
+        let x = 3;
+        x + 1 // note the no semi colon
+    };
+    println!("Value of y: {}", y);
+
+    /*
+        F.1
+    */
+    let fv = five();
+    println!("Value of fv: {}", fv);
+
+    /*
+        F.2
+    */
+    let ps = plus_one(5);
+    println!("Value of ps: {}", ps);
 }
+
+// F.1
+/*
+    We don’t name return values, but we do declare their type after an arrow (->).
+    The return value of the function is synonymous with the value of the final expression in the block of the body of a function
+    Can return early from a function by using the return keyword and specifying a value, but most functions return the last expression implicitly.
+*/
+fn five() -> i32 {
+    5
+}
+
+// F.2
+/*
+
+*/
+fn plus_one(x: i32) -> i32 {
+    x + 1 // expression
+    // x + 1; with the semicolon will get error because it is now a statement 
+}
+
 
 fn variables_and_mutability() {
         // constant
