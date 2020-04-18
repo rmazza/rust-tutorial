@@ -31,11 +31,31 @@ fn ownership(){
 
     // When you see a call to clone, you know that some arbitrary code is being executed and that code may be expensive. It’s a visual indicator that something different is going on.
     let s1 = String::from("hello");
-    let s2 = s1.clone();
+    let s2 = s1.clone(); //deep copy of the heap data of the String, not just the stack data
 
-println!("s1 = {}, s2 = {}", s1, s2);
+    println!("s1 = {}, s2 = {}", s1, s2);
+
+    let heapString = String::from("hello");  // s comes into scope
+
+    takes_ownership(heapString);             // s's value moves into the function...
+                                    // ... and so is no longer valid here
+
+    let stackX = 5;                      // x comes into scope
+
+    makes_copy(stackX);                  // x would move into the function,
+                                    // but i32 is Copy, so it’s okay to still
+                                    // use x afterward
 
 }
+
+fn takes_ownership(some_string: String) { // some_string comes into scope
+    println!("{}", some_string);
+} // Here, some_string goes out of scope and `drop` is called. The backing
+  // memory is freed.
+
+fn makes_copy(some_integer: i32) { // some_integer comes into scope
+    println!("{}", some_integer);
+} // Here, some_integer goes out of scope. Nothing special happens.
 
 fn control_flow(){
     // 'if' Expressions
