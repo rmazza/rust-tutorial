@@ -4,6 +4,37 @@ fn main() {
     array_type();
     function_example_one(3,4);
     control_flow();
+    ownership();
+}
+
+fn ownership(){
+    let s = "hello";
+
+    // String. This type is allocated on the heap and as such is able to store an amount of text that is unknown to us at compile time.
+    let t = String::from("hello");
+    // The double colon (::) is an operator that allows us to namespace this particular from function under the String type rather than using some sort of name like string_from. 
+
+    let mut s = String::from("hello");
+
+    s.push_str(", world!"); // push_str() appends a literal to a String
+
+    println!("{}", s); // This will print `hello, world!`
+
+    // the memory is automatically returned once the variable that owns it goes out of scope.
+
+    // ERROR
+    // let s1 = String::from("hello");
+    // let s2 = s1;
+    
+    // println!("{}, world!", s1);
+
+
+    // When you see a call to clone, you know that some arbitrary code is being executed and that code may be expensive. It’s a visual indicator that something different is going on.
+    let s1 = String::from("hello");
+    let s2 = s1.clone();
+
+println!("s1 = {}, s2 = {}", s1, s2);
+
 }
 
 fn control_flow(){
