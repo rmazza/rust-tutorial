@@ -3,6 +3,99 @@ fn main() {
     tuple_type();
     array_type();
     function_example_one(3,4);
+    control_flow();
+}
+
+fn control_flow(){
+    // 'if' Expressions
+    let number: i32 = 3;
+
+    if number < 5 {
+        println!("condition was true");
+    } else {
+        println!("condition was false");
+    }
+
+    // comment out to move farther
+    // let errorNum: i32 = 3;
+
+    // if errorNum {
+    //     println!("hello");
+    // }
+
+    let number = 6;
+
+    if number % 4 == 0 {
+        println!("number is divisible by 4");
+    } else if number % 3 == 0 {
+        println!("number is divisible by 3");
+    } else if number % 2 == 0 {
+        println!("number is divisible by 2");
+    } else {
+        println!("number is not divisible by 4, 3, or 2");
+    }
+
+    // Because if is an expression, we can use it on the right side of a let statement
+    let condition = true;
+    let number = if condition {
+        5
+    } else {
+        6
+    };
+    
+    println!("The value of number is: {}", number);
+
+    // will error
+    // let condition = true;
+
+    // let number = if condition {
+    //     5
+    // } else {
+    //     "six"
+    // };
+
+    // The loop keyword tells Rust to execute a block of code over and over again forever or until you explicitly tell it to stop.
+    // INFINITE LOOP
+    // loop {
+    //     println!("again!");
+    // }
+    
+    let mut counter = 0;
+
+    let result = loop {
+        counter += 1;
+
+        if counter == 10 {
+            break counter * 2;
+        }
+    };
+    println!("The result is {}", result);
+
+    let mut number = 3;
+
+    // compiler adds runtime code to perform the conditional 
+    //  check on every element on every iteration through the loop.
+    while number != 0 {
+        println!("{}!", number);
+
+        number -= 1;
+    }
+
+    println!("LIFTOFF!!!");
+
+    let mut number = 3;
+
+    let a = [10, 20, 30, 40, 50];
+
+    for element in a.iter() {
+        println!("the value is: {}", element);
+    }
+
+    // reverse
+    for number in (1..4).rev() {
+        println!("{}!", number);
+    }
+    println!("LIFTOFF!!!");
 }
 
 fn function_example_one(x: i32, y: i32){
